@@ -1,0 +1,58 @@
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  flex-direction: column;
+
+
+  table {
+    border-collapse: collapse;
+
+    tr {
+      border: 1px solid #ccc;
+
+      td {
+        // padding: 0;
+        border: 1px solid #ccc;
+
+        >div {
+          width: 30px;
+          height: 30px;
+          line-height: 30px;
+          text-align: center;
+
+          &.status-open {
+            cursor: pointer;
+            background: #eee;
+          }
+
+          .flag {
+            img {
+              margin-top: -3px;
+              margin-right: -2px;
+            }
+          }
+
+          img {
+            width: 15px;
+            height: 15px;
+            vertical-align: middle;
+          }
+        }
+      }
+    }
+  }
+
+  .actions {
+    margin-top: 20px;
+
+    button {
+      background: blueviolet;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+  }
+}

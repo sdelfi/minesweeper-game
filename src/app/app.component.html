@@ -1,0 +1,26 @@
+<div class="inner">
+  <table>
+    <tr *ngFor="let row of board.cells; index as y;">
+      <td *ngFor="let cell of row; index as x">
+        <div [ngClass]="'status-' + cell.status" (click)="checkCell(cell)"
+          (contextmenu)="$event.preventDefault();flagCell(cell)">
+          <div *ngIf="cell.mine && cell.status === 'clear'">
+            <img
+              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABmJLR0QA/wD/AP+gvaeTAAAC/0lEQVRIx72XW08TQRTHicbvgHwGfDAEE41PyhcQuoWXIpeEcOtuBeneirRYS8ulu1tYSdnZVpEorYDRcDNCJEG/hMZofJcHE33c48zSxRa6K24pm/zTmTl7zm/OXLc1NS4fNpm9Iiiovua8H05BMV7WHlUlOM7oti1YRl+IbO1Spsl9VjJa4SQ93ZNOX7LaqHz+IpfKNGEbEIUk7RZpK7HLKM5LWs41mJf0oQJgi5P1Fk7RlnD5wIIW6YDYglK2mZf1bdKGfQMVzKPWYAXnFR2mnuQBrW3C8tZ7WN3Zh7XdfRh7/BTKdAS4FLpawRzrXlbWjUQ2B7ntPROG1rYgubgK8UwOYtpzDNFPQFkZGbyCfC7nV2vFQQx1+Q282v0Aau41hGaz5bMrLwOLcoQEZ/U63MP7BBZMomuiot/E5d8kQHplAybQi/8BFuvX6Jx+ncQ8TEQbJqzSA0HSBgq9hCqJxO632z79bBXgrIIMnFjfP+ZW/yikShdMaV0HvOj+2syybvPuUX3fEVrY/Af5t3sQnl80HckvqVuBZhZfgra6eVQnZdJm1cv58jL6EQ6HLzguModeV5IxjKjZWlvws/V3Uwsr61ANLW3sTNqCibGK4IT9SSWlL1dtqCfV2nNfXANR+SdFURedvywU7Uy3UyChgm8k8t0Zik8vcimc1cHBxOfAGxDBQwtGCy322kLP8sjsG08CRZtQSyfhh/tXG2bxNcjJC42imrlBDng3wOHpeWjnoiaMYkSjg0/4mhmukfLzHtyRobbBYJ3jsNMTSq8/ljJYWTsVMBBXoVOIgYcpZIl/u8X4jKs7uUuMSV4mZNzlo9AzNgWDURnoWMoUKfeGp6EDw9ruPSgeUlPdo4lZ118gZIiOBzytKJprcA2maIExg/iF7U4xFvEFx79RgZBxHOLFbdj2tSs0ESbvHoIFxjUYB8h7/MJ08eYnt0z7SKTVgvqGIlTxzUPeJT7EtxKw7Qc9Dv4Z2z+58a3owav2IQ4+fu7/ne7QQj2RW/8/ReMJetZ7Ko4AAAAASUVORK5CYII=">
+          </div>
+          <div class="flag" *ngIf="cell.status === 'flag'">
+            <img
+              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAA0ElEQVQ4y2NggIKa/hWalRMWmTOQC7b2zth5sGfavesREQpkGXCxtev69/7+/5/a2t6+KCubeSUmRp8sA2D4U0fHl2clJavvxMU5kmUADH/p7Pz5tKRk9/WYmEiyDIAb1N3991VV1aHb6ekx/xkYGEk2AGxIV9ev52Vl269GRZmRZMDnzs6vL8rLl99ISnIkyQuwGLkaF2dIUiC+b25+8qy4uOd2eLgy0dF4uKnjzK22rncPCwoazoWGipKckKav3D1rzrrDh8hOysPAAHKzMwA3sezbyZR7WQAAAABJRU5ErkJggg==">
+          </div>
+          <div *ngIf="!cell.mine && cell.status === 'clear' && cell.proximityMines !== 0">
+            {{ cell.proximityMines }}
+          </div>
+        </div>
+      </td>
+    </tr>
+  </table>
+
+  <div class="actions">
+    <button (click)="resetGame()">Restart</button>
+  </div>
+</div>
